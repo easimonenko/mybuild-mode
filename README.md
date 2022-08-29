@@ -18,8 +18,7 @@ _mybuild-mode_ doesn't support:
 _mybuild-mode_ uses standard `font-lock-mode` for proper syntax highlighting
 and based on `c-mode` for proper indentations.
 
-When creating the mode, the formal grammar
-[myfile.grm](https://github.com/easimonenko/embox/blob/master/mk/mybuild/myfile.grm)
+When creating the mode, the formal grammar `mk/mybuild/myfile.grm`
 from Embox sources was used.
 
 The correctness of the highlighting was manually checked on Mybuild files
