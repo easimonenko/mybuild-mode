@@ -62,6 +62,7 @@
         ("true\\|false" . 'font-lock-constant-face)
         ("[A-Za-z][A-Za-z0-9-+/_]*" . 'font-lock-function-name-face)))
 
+;;;###autoload
 (define-derived-mode mybuild-mode c-mode "Mybuild"
   "GNU Emacs major mode for Mybuild files from Embox operating system."
   (set-syntax-table mybuild-mode-syntax-table)
@@ -72,6 +73,7 @@
   (setq font-lock-defaults '(mybuild-highlights))
   (run-hooks 'mybuild-mode-hook))
 
+;;;###autoload
 (add-to-list 'auto-mode-alist '("/Mybuild\\'" . mybuild-mode))
 
 (provide 'mybuild-mode)
