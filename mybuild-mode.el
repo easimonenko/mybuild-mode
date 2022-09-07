@@ -1,4 +1,4 @@
-;;; mybuild-mode.el --- Major mode for Mybuild files from Embox  -*- lexical-binding: t; -*-
+;;; mybuild-mode.el --- Major mode for editing Mybuild files from Embox  -*- lexical-binding: t; -*-
 
 ;; Copyright (c) 2022 Evgeny Simonenko
 
@@ -26,11 +26,9 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; GNU Emacs major mode for Mybuild files from Embox operating system
+;; Major mode for editing Mybuild files from Embox operating system
 
 ;;; Code:
-
-(defvar mybuild-mode-hook nil "Hooks for `mybuild-mode'.")
 
 (defvar mybuild-mode-map
   (let ((map (make-keymap)))
@@ -52,25 +50,33 @@
     st)
   "Syntax table for `mybuild-mode'.")
 
-(defvar mybuild-highlights nil "Mybuild syntax highlighting with `'font-lock-mode'.")
+(defvar mybuild-keywords
+  '("package" "import" "annotation" "interface" "extends" "feature" "module"
+    "static" "abstract" "depends" "provides" "requires" "source" "object" "option"))
 
-(setq mybuild-highlights
-      '(("'''[^z-a]*?'''" . 'font-lock-string-face)
-        ("@[A-Za-z][A-Za-z0-9-+_]*" . 'font-lock-preprocessor-face)
-        ("package \\|import \\|annotation \\|interface \\|extends \\|feature \\|module \\|static \\|abstract \\|depends \\|provides \\|requires \\|source \\|object \\|option " . 'font-lock-keyword-face)
-        ("string\\|number\\|boolean" . 'font-lock-type-face)
-        ("true\\|false" . 'font-lock-constant-face)
-        ("[A-Za-z][A-Za-z0-9-+/_]*" . 'font-lock-function-name-face)))
+(defvar mybuild-types
+  '("string" "number" "boolean"))
+
+(defvar mybuild-constants
+  '("true" "false"))
+
+(defvar mybuild-highlights
+  `(("'''[^z-a]*?'''" . 'font-lock-string-face)
+    ("@[A-Za-z][A-Za-z0-9-+_]*" . 'font-lock-preprocessor-face)
+    ( ,(regexp-opt mybuild-keywords 'words) . 'font-lock-keyword-face)
+    ( ,(regexp-opt mybuild-types 'words) . 'font-lock-type-face)
+    ( ,(regexp-opt mybuild-constants 'words) . 'font-lock-constant-face)
+    ("[A-Za-z][A-Za-z0-9-+/_]*" . 'font-lock-function-name-face))
+  "Mybuild syntax highlighting with `'font-lock-mode'.")
 
 ;;;###autoload
 (define-derived-mode mybuild-mode c-mode "Mybuild"
-  "GNU Emacs major mode for Mybuild files from Embox operating system."
-  (set-syntax-table mybuild-mode-syntax-table)
-  (use-local-map mybuild-mode-map)
+  "Major mode for editing Mybuild files from Embox operating system."
+  :syntax-table mybuild-mode-syntax-table
   (setq-local comment-start "// ")
   (setq-local comment-end "")
   (setq-local indent-tabs-mode nil)
-  (setq font-lock-defaults '(mybuild-highlights))
+  (setq-local font-lock-defaults '(mybuild-highlights))
   (run-hooks 'mybuild-mode-hook))
 
 ;;;###autoload
