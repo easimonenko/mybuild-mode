@@ -76,8 +76,7 @@
   (setq-local comment-start "// ")
   (setq-local comment-end "")
   (setq-local indent-tabs-mode nil)
-  (setq-local font-lock-defaults '(mybuild-highlights))
-  (run-hooks 'mybuild-mode-hook))
+  (setq-local font-lock-defaults '(mybuild-highlights)))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("/Mybuild\\'" . mybuild-mode))
