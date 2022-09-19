@@ -69,8 +69,16 @@
     ("[A-Za-z][A-Za-z0-9-+/_]*" . 'font-lock-function-name-face))
   "Mybuild syntax highlighting with `'font-lock-mode'.")
 
-(defvar mybuild-mode-indent-offset 2
-  "Indentation offset for `mybuild-mode'.")
+(defgroup mybuild nil
+  "Customization variables for Mybuild mode."
+  :group 'languages
+  :tag "Mybuild")
+
+(defcustom mybuild-indent-offset 2
+  "Indentation offset for `mybuild-mode'."
+  :group 'mybuild
+  :type 'integer
+  :safe 'integerp)
 
 (defun mybuild-mode-indent-line ()
   "Indent current line for `mybuild-mode'."
@@ -82,12 +90,12 @@
           (while t
             (backward-up-list 1)
             (when (looking-at "[{]")
-              (setq indent-col (+ indent-col mybuild-mode-indent-offset))))
+              (setq indent-col (+ indent-col mybuild-indent-offset))))
         (error nil)))
     (save-excursion
       (back-to-indentation)
-      (when (and (looking-at "[}]") (>= indent-col mybuild-mode-indent-offset))
-        (setq indent-col (- indent-col mybuild-mode-indent-offset))))
+      (when (and (looking-at "[}]") (>= indent-col mybuild-indent-offset))
+        (setq indent-col (- indent-col mybuild-indent-offset))))
     (indent-line-to indent-col)))
 
 ;;;###autoload

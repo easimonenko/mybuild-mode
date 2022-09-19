@@ -15,6 +15,12 @@ _mybuild-mode_ doesn't support:
 - correctness checking;
 - tooltips and auto completion.
 
+## Customization
+
+You can set the width of the indentation by setting the customizable user option
+variable `mybuild-indent-offset` from customization group `mybuild`. By default,
+it is set to `2`.
+
 ## Details
 
 _mybuild-mode_ based on `prog-mode` and uses standard `font-lock-mode`
