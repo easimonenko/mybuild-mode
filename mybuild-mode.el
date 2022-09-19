@@ -69,13 +69,35 @@
     ("[A-Za-z][A-Za-z0-9-+/_]*" . 'font-lock-function-name-face))
   "Mybuild syntax highlighting with `'font-lock-mode'.")
 
+(defvar mybuild-mode-indent-offset 2
+  "Indentation offset for `mybuild-mode'.")
+
+(defun mybuild-mode-indent-line ()
+  "Indent current line for `mybuild-mode'."
+  (interactive)
+  (let ((indent-col 0))
+    (save-excursion
+      (beginning-of-line)
+      (condition-case nil
+          (while t
+            (backward-up-list 1)
+            (when (looking-at "[{]")
+              (setq indent-col (+ indent-col mybuild-mode-indent-offset))))
+        (error nil)))
+    (save-excursion
+      (back-to-indentation)
+      (when (and (looking-at "[}]") (>= indent-col mybuild-mode-indent-offset))
+        (setq indent-col (- indent-col mybuild-mode-indent-offset))))
+    (indent-line-to indent-col)))
+
 ;;;###autoload
-(define-derived-mode mybuild-mode c-mode "Mybuild"
+(define-derived-mode mybuild-mode prog-mode "Mybuild"
   "Major mode for editing Mybuild files from Embox operating system."
   :syntax-table mybuild-mode-syntax-table
   (setq-local comment-start "// ")
   (setq-local comment-end "")
   (setq-local indent-tabs-mode nil)
+  (setq-local indent-line-function 'mybuild-mode-indent-line)
   (setq-local font-lock-defaults '(mybuild-highlights)))
 
 ;;;###autoload
