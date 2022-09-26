@@ -1,6 +1,7 @@
 # mybuild-mode
 
 [![MELPA](https://melpa.org/packages/mybuild-mode-badge.svg)](https://melpa.org/#/mybuild-mode)
+[![MELPA Stable](https://stable.melpa.org/packages/mybuild-mode-badge.svg)](https://stable.melpa.org/#/mybuild-mode)
 
 _mybuild-mode_ -- major mode for GNU Emacs for Mybuild files from
 [Embox](https://embox.github.io/) operating system.
