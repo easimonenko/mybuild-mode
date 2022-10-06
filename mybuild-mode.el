@@ -109,7 +109,7 @@
   (setq-local font-lock-defaults '(mybuild-highlights)))
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("/Mybuild\\'" . mybuild-mode))
+(add-to-list 'auto-mode-alist '("\\(?:/Mybuild\\|\\.my\\|/mods\\.conf\\)\\'" . mybuild-mode))
 
 (provide 'mybuild-mode)
 ;;; mybuild-mode.el ends here
