@@ -52,7 +52,8 @@
 
 (defvar mybuild-keywords
   '("package" "import" "annotation" "interface" "extends" "feature" "module"
-    "static" "abstract" "depends" "provides" "requires" "source" "object" "option"))
+    "static" "abstract" "depends" "provides" "requires" "source" "object" "option"
+    "configuration" "include"))
 
 (defvar mybuild-types
   '("string" "number" "boolean"))
