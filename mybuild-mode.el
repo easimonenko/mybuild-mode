@@ -4,7 +4,7 @@
 
 ;; Author: Evgeny Simonenko <easimonenko@gmail.com>
 ;; Keywords: languages
-;; Version: 0.1.0
+;; Version: 0.2.0
 ;; Package-Requires: ((emacs "24.3"))
 ;; Created: August 2022
 ;; URL: https://github.com/easimonenko/mybuild-mode
@@ -26,7 +26,21 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
+;;
 ;; Major mode for editing Mybuild files from Embox operating system
+;;
+;; mybuild-mode supports:
+;;
+;; * syntax highlighting;
+;; * proper indentations;
+;; * autoload for Mybuild, *.my, mods.conf files.
+;;
+;; Customization
+;; -------------
+;;
+;; You can set the width of the indentation by setting the customizable user
+;; option variable mybuild-indent-offset from customization group mybuild.
+;; By default, it is set to 2.
 
 ;;; Code:
 

@@ -9,7 +9,8 @@ _mybuild-mode_ -- major mode for GNU Emacs for Mybuild files from
 _mybuild-mode_ supports:
 
 - syntax highlighting;
-- proper indentations.
+- proper indentations;
+- autoload for `Mybuild`, `*.my`, `mods.conf` files.
 
 _mybuild-mode_ doesn't support:
 
